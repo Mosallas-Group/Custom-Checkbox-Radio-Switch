@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  background-color: #ffffff;
+}
+
+ul {
+  list-style: none;
+  li {
+    margin-bottom: 20px;
+  }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  border: 1px solid #000000;
+  width: 21px;
+  height: 21px;
+  cursor: pointer;
+  outline: 0;
+  vertical-align: middle;
+  position: relative;
+  transition: background 0.5s, border-color 0.5s, box-shadow 0.5s;
+
+  &::after {
+    content: "";
+    left: 0;
+    top: 0;
+    position: absolute;
+  }
+
+  &:checked {
+    background-color: #000000;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px #0000002d;
+  }
+
+  &:not(.switch) {
+    &::after {
+      opacity: 0;
+    }
+
+    &:checked {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  & + label {
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 4px;
+    vertical-align: middle;
+    color: #808080;
+  }
+}
+
+input[type="checkbox"] {
+  // checkbox
+  &:not(.switch) {
+    border-radius: 7px;
+
+    &::after {
+      width: 5px;
+      height: 9px;
+      border: 2px solid #ffffff;
+      left: 7px;
+      top: 4px;
+      border-top: 0;
+      border-left: 0;
+      transform: rotate(43deg);
+    }
+  }
+
+  // switch
+
+  &.switch {
+    width: 40px;
+    border-radius: 100px;
+    background-color: #ffffff;
+
+    &::after {
+      left: 3px;
+      top: 2px;
+      border-radius: 50%;
+      width: 15px;
+      height: 15px;
+      background-color: #000000;
+      transition: transform 0.5s;
+    }
+
+    &:checked {
+      background-color: #000000;
+
+      &::after {
+        background-color: #ffffff;
+        transform: translateX(18px);
+      }
+    }
+  }
+}
+
+// radio
+
+input[type="radio"] {
+  border-radius: 50%;
+
+  &::after {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #ffffff;
+    opacity: 0;
+    transition: transform 0.5s;
+  }
+
+  &:checked {
+    &::after {
+      transform: scale(0.5);
+    }
+  }
+}
